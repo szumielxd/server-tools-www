@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="A website for me to do whatever I want with." />
+
+        <!-- Page specific styles -->
+        <th:block layout:fragment="styles"></th:block>
+
+        <!-- Core CSS -->
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <link rel="stylesheet" th:href="@{/css/header.css}" />
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+                integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+                crossorigin="anonymous"></script>
+
+        <!-- Core JS -->
+        <script th:src="@{/js/core.js}" defer></script>
+        <script th:src="@{/js/header.js}" defer></script>
+    </head>
+
+    <body style="color: black;">
+    <header>
+        <div id="header-buttons" th:fragment="header">
+            <a th:href="${siteURL}">
+                <img th:src="${siteLogo}" alt="logo" height="50px" style="margin: 0 10px" />
+            </a>
+
+            <th:block th:each="entry : ${pages}">
+                <a th:href="@{'/' + ${entry.key}}">
+                    <button class="header-button" th:attr="active=${entry.key == currentPage} ? 'active' : null">
+                        <span th:text="${entry.value}">Page</span>
+                    </button>
+                </a>
+            </th:block>
+        </div>
+
+        <th:block layout:fragment="headerExtras">
+            <!-- Optional search bar -->
+        </th:block>
+    </header>
+
+    <article>
+        <th:block layout:fragment="titleBlock">
+            <!-- Optional title area -->
+        </th:block>
+
+        <th:block layout:fragment="subtitleBlock">
+            <!-- Optional subtitle -->
+        </th:block>
+
+        <div id="content">
+            <div layout:fragment="content">
+                <!-- content -->
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div>Copyright ©
+            <span th:text="${T(java.time.Year).now()}"></span> szumielxd. All Rights Reserved
+        </div>
+    </footer>
+    <div id="notification">
+        <div id="notification-window">
+            <div id="notification-header"></div>
+            <div class="info-card-content">
+                <div id="notification-body" class="info-card-content-table"></div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

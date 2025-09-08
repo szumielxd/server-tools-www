@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/base}"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title layout:fragment="title">Panel zarządzania graczami</title>
+
+	<link rel="stylesheet" th:href="@{/css/info.css}" />
+
+	<th:block layout:fragment="scripts">
+		<script th:src="@{/js/info-core.js}" defer></script>
+		<script th:src="@{/js/info-logs.js}" defer></script>
+		<script th:src="@{/js/info-portfel.js}" defer></script>
+		<script th:src="@{/js/info-auth.js}" defer></script>
+	</th:block>
+</head>
+
+<body th:data-user-id="${uuid}" th:data-user-name="${username}" th:data-server-name="${serverName}">
+	<th:block layout:fragment="headerExtras">
+		<form action="">
+			<div class="header-username-input-holder">
+				<input type="text" name="query" autocomplete="off" placeholder="Podaj nick" class="header-username-input" />
+				<div class="header-username-input-suggestions">
+					<div class="header-username-input-suggestions-empty">Nie znaleziono</div>
+				</div>
+			</div>
+		</form>
+	</th:block>
+
+	<th:block layout:fragment="titleBlock">
+		<div id="title">
+			<div id="profil-entry-username">Profil: <span id="profil-entry-username-value" th:text="${username}"></span></div>
+			<div id="profil-entry-uuid">UUID: <span id="profil-entry-uuid-value" th:text="${uuid}"></span></div>
+		</div>
+	</th:block>
+
+	<th:block layout:fragment="subtitleBlock">
+		<div id="subtitle">Serwer: <span th:text="${serverName}"></span></div>
+	</th:block>
+
+	<th:block layout:fragment="content">
+		<!-- Page-specific content here -->
+		<div id="info-logs" class="info-card">
+			<div id="info-logs-header" class="info-card-header">
+				Logi
+			</div>
+			<div id="info-logs-content" class="info-card-content">
+				<div id="info-logs-content-table" class="info-card-content-table">
+					<div id="info-logs-content-lastid" style="display: none">-1</div>
+				</div>
+			</div>
+		</div>
+		<div id="info-auth" class="info-card">
+			<div id="info-auth-header" class="info-card-header">
+				Logowanie
+			</div>
+			<div id="info-auth-content" class="info-card-content">
+				<div id="info-auth-content-table" class="info-card-content-table">
+					<div>
+						<div class="info-auth-content-table-section" type="registration">
+							<div class="section-header">Rejestracja:</div>
+							<div class="section-body">
+								<div field="date">Data: <span class="value"></span><span class="no-value">Brak</span></div>
+								<div field="ip">IP: <span class="value"></span><span class="no-value">Brak</span></div>
+							</div>
+						</div>
+						<div class="info-auth-content-table-section" type="login">
+							<div class="section-header">Ostatnie logowanie:</div>
+							<div class="section-body">
+								<div field="date">Data: <span class="value"></span><span class="no-value">Brak</span></div>
+								<div field="ip">IP: <span class="value"></span><span class="no-value">Brak</span></div>
+							</div>
+						</div>
+						<div class="info-auth-content-table-section" type="info">
+							<div class="section-header">Dane:</div>
+							<div class="section-body">
+								<div field="nick">Nick: <span class="value"></span><span class="no-value">Brak</span></div>
+								<div field="premium">Premium: <span class="value" value=""><span class="colored-true">Tak</span><span class="colored-false">Nie</span></span></div>
+							</div>
+						</div>
+						<div class="info-auth-content-table-section" type="portfel">
+							<div class="section-header">Portfel:</div>
+							<div class="section-body">
+								<div field="balance">Konto: <span class="value"></span></div>
+								<div field="minorbalance">Pixelki: <span class="value"></span></div>
+								<div field="ignoretop">Ukryj w topce: <span class="value" value=""><span class="colored-true">Tak</span><span class="colored-false">Nie</span></span></div>
+							</div>
+						</div>
+					</div>
+					<button id="info-auth-resetpassword" class="primary-button">Resetuj Hasło</button>
+					<button id="info-auth-resetaccount" class="primary-button">Resetuj Całe Konto</button>
+					<button id="info-auth-enablepremium" class="primary-button">Włącz Premium</button>
+				</div>
+			</div>
+		</div>
+	</th:block>
+</body>
+</html>

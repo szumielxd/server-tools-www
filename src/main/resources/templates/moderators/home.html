@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/base}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title layout:fragment="title">Panel zarządzania graczami</title>
+
+    <link rel="stylesheet" th:href="@{/css/moderators.css}" />
+    <script th:src="@{/js/moderators-core.js}" defer></script>
+    <script th:src="@{/js/moderators-modlog.js}" defer></script>
+</head>
+
+    <th:block layout:fragment="headerExtras">
+        <!-- Same input form if needed -->
+        <form th:action="@{/info/search/}">
+            <div class="header-username-input-holder">
+                <input type="text" name="query" autocomplete="off" placeholder="Podaj nick" class="header-username-input" />
+                <div class="header-username-input-suggestions">
+                    <div class="header-username-input-suggestions-empty">Nie znaleziono</div>
+                </div>
+            </div>
+        </form>
+    </th:block>
+
+    <th:block layout:fragment="titleBlock">
+        <div id="title">
+            <div id="profil-entry-username"><span>Zarządzanie Moderacją</span></div>
+        </div>
+    </th:block>
+
+    <th:block layout:fragment="subtitleBlock">
+        <div id="subtitle">Serwer: <span th:text="${serverName}"></span></div>
+    </th:block>
+
+    <th:block layout:fragment="content">
+        <div id="info-logs" class="info-card">
+            <div id="info-logs-header" class="info-card-header">
+                Logi
+            </div>
+            <div id="info-logs-content" class="info-card-content">
+                <div id="info-logs-content-table" class="info-card-content-table">
+                </div>
+                <div id="info-logs-content-lastid" style="display: none">-1</div>
+            </div>
+        </div>
+
+        <div id="info-list" class="info-card">
+            <div id="info-list-header" class="info-card-header">
+                Moderacja
+            </div>
+            <div id="info-list-content" class="info-card-content">
+                <div id="info-list-content-table" class="info-card-content-table">
+                    <div>
+                        <img style="margin-top: 100px; opacity: .8;" th:src="@{/img/load.svg}" height="64px" />
+                    </div>
+                </div>
+            </div>
+            <div id="info-list-actions">
+                <div class="info-list-actions-box">
+                    <div id="info-list-actions-freeze" class="info-list-actions-all">
+                        <div id="info-list-actions-freeze-icon" class="info-list-actions-icon"></div>
+                        <div id="info-list-actions-freeze-tooltip" class="info-list-actions-all-tooltip"><span freeze="on">Zawieszenie</span><span freeze="off">Odwieszenie</span></div>
+                        <div id="info-list-actions-freeze-icon-handler" class="info-list-actions-icon-handler" ondragover="moderatorDragoverHandler(event)" ondragenter="moderatorDragenterHandler(event)" ondragleave="moderatorDragleaveHandler(event)" ondrop="freezeModeratorDropHandler(event)"></div>
+                    </div>
+                </div>
+                <div class="info-list-actions-box">
+                    <div id="info-list-actions-leave" class="info-list-actions-all">
+                        <div id="info-list-actions-leave-icon" class="info-list-actions-icon"></div>
+                        <div id="info-list-actions-leave-tooltip" class="info-list-actions-all-tooltip">Odejście</div>
+                        <div id="info-list-actions-leave-icon-handler" class="info-list-actions-icon-handler" ondragover="moderatorDragoverHandler(event)" ondragenter="moderatorDragenterHandler(event)" ondragleave="moderatorDragleaveHandler(event)" ondrop="leaveModeratorDropHandler(event)"></div>
+                    </div>
+                </div>
+                <div class="info-list-actions-box">
+                    <div id="info-list-actions-dump" class="info-list-actions-all">
+                        <div id="info-list-actions-dump-icon" class="info-list-actions-icon"></div>
+                        <div id="info-list-actions-dump-tooltip" class="info-list-actions-all-tooltip">Wyrzucenie</div>
+                        <div id="info-list-actions-dump-icon-handler" class="info-list-actions-icon-handler" ondragover="moderatorDragoverHandler(event)" ondragenter="moderatorDragenterHandler(event)" ondragleave="moderatorDragleaveHandler(event)" ondrop="kickModeratorDropHandler(event)"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="info-list-options">
+                <div class="info-list-options-box">
+                    <div id="info-list-options-addnew" class="info-list-options-all" onclick="addModeratorClickHandler(event)">
+                        <div id="info-list-options-addnew-icon" class="info-list-options-icon" style="cursor:pointer;">
+                            <object data="../img/plus-n.svg" type="image/svg+xml" width="80px" height="80px" style="pointer-events:none;"></object>
+                        </div>
+                        <div id="info-list-options-addnew-tooltip" class="info-list-options-all-tooltip">Dodaj nowego</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

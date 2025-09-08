@@ -1,0 +1,12 @@
+<div class="info-list-content-entries" style="--moderation-group-color: {{groupColor}}" group-priority="{{groupWeight}}" group-color="{{groupColor}}" group-id="{{groupId}}" group-name="{{groupName}}">
+	<table class="info-list-content-entries-table">
+		<th class="moderation-group-display">{{groupName}}</th>
+		<tr><td class="info-list-content-entries-empty">Brak</td></tr>
+		{{members}}
+	</table>
+	<div class="info-list-content-entries-drop-hover">
+		<div class="info-list-content-entries-drop-add">+</div>
+		<div class="info-list-content-entries-drop-info">Upuść by<br><span promotion>awansować</span><span demotion>zdegradować</span></div>
+		<div class="info-list-content-entries-drop-hover-handler" ondragover="moderatorDragoverHandler(event)" ondragenter="moderatorDragenterHandler(event)" ondragleave="moderatorDragleaveHandler(event)" ondrop="moderatorDropHandler(event)"></div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/base}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title layout:fragment="title">Wyszukaj użytkownika</title>
+    </head>
+
+    <th:block layout:fragment="styles">
+        <link rel="stylesheet" th:href="@{/css/search.css}" />
+    </th:block>
+
+    <th:block layout:fragment="content">
+        <div id="info-search">
+            <div id="info-search-header">
+                Wyszukaj użytkownika
+            </div>
+            <div id="info-search-content" class="info-card-content">
+                <div id="info-search-content-table" class="info-card-content-table">
+                    <form th:action="@{/info/search/}" method="get">
+                        <div class="header-username-input-holder">
+                            <label for="username">Nick<br></label>
+                            <input id="username" type="text" name="query" autocomplete="off" placeholder="Podaj nick" class="header-username-input" />
+                            <div class="header-username-input-suggestions">
+                                <div class="header-username-input-suggestions-empty">Nie znaleziono</div>
+                            </div>
+                        </div>
+                        <span class="error-message" th:active="${search_invalid_user}">Nie znaleziono użytkownika <span th:text="${search_query}"></span></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

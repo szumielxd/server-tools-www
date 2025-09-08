@@ -1,0 +1,175 @@
+#profil-entry-uuid {
+	font-size: .35em;
+}
+div#info-logs-content-table {
+    overflow-y: scroll;
+    overflow-x: clip;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.infolog-row {
+	/*font-size: 1.7em;
+	margin-bottom: 10px;*/
+	font-size: 13px;
+	width: 100%;
+	height: auto;
+	margin: 0 0 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.infolog-date {
+	/*width: 20vw;*/
+	font-size: 75%;
+	flex-shrink: 0;
+	height: auto;
+	width: 125px;
+	margin: 0 10px 0 0;
+	/*font-size: 85%;*/
+	color: #ff6666;
+}
+.infolog-log {
+    height: auto;
+    margin: 0 10px 0 0;
+    color: hsl(213, 10%, 55%);
+    overflow-wrap: anywhere;
+}
+.infolog-log[logtype="join"] > span {
+	color: hsl(180, 60%, 70%);
+}
+.infolog-log[logtype="server_change"] > span {
+	color: hsl(300, 100%, 80%);
+}
+.infolog-log[logtype="command"] > span {
+	color: hsl(40, 70%, 65%);
+}
+.infolog-log[logtype="message"] > span {
+	color: hsl(120, 60%, 60%);
+}
+.infolog-log[logtype="kick"] > span {
+	color: hsl(262, 60%, 65%);
+}
+.infolog-log[logtype="quit"] > span {
+	color: hsl(0, 100%, 35%);
+}
+
+div#info-auth-content-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: hsl(213, 10%, 55%);
+    font-size: 1.2em;
+}
+div#info-auth-content-table .section-header {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: hsl(213, 20%, 60%);
+}
+div#info-auth-content-table .section-body {
+    margin: 0 0 4px 20px;
+}
+div#info-auth-content-table .section-body span.value {
+	color: hsl(180, 60%, 70%);
+}
+div#info-auth-content-table .section-body span.no-value {
+	color: hsl(213 20% 70% / 1);
+    font-style: italic;
+}
+div#info-auth-content-table .section-body span.value:not(:empty) + span.no-value {
+	display: none;
+}
+div#info-auth-content-table .section-body span.value[value=""] > span.colored-true,
+div#info-auth-content-table .section-body span.value[value=""] > span.colored-false {
+	display: none;
+}
+div#info-auth-content-table .section-body span.value[value="false"] > span.colored-true {
+	display: none;
+}
+div#info-auth-content-table .section-body span.value[value="true"] > span.colored-false {
+	display: none;
+}
+
+div#info-auth-resetpassword-warning {
+	font-size: 2.0em;
+    color: hsl(213, 10%, 55%);
+}
+
+div#info-auth-resetpassword-warning > span {
+	color: hsl(180, 60%, 70%);
+}
+
+span.server-name {
+	color: #ff9800 !important;
+}
+
+button#info-auth-resetpassword-confirm {
+	display: block;
+	margin: 50px auto;
+	padding: 20px;
+	font-size: 2.2em;
+	font-weight: bold;
+	color: hsl(213deg 15% 80%);
+}
+
+div#info-auth-resetpassword-success {
+    font-size: 2.0em;
+    color: hsl(213, 10%, 55%);
+}
+
+div#info-auth-resetpassword-success > span {
+    color: hsl(180, 60%, 70%);
+}
+
+textarea#info-auth-resetpassword-successmsg {
+    display: block;
+    margin: 30px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+	resize: none;
+    background-color: hsl(213, 15%, 12%);
+    color: hsl(213, 20%, 30%);
+    font-size: 2.0em;
+    font-style: italic;
+    border-radius: 40px;
+    border: 2px solid hsl(213deg 20% 20%);
+}
+
+img#info-auth-resetpassword-loadicon {
+    margin: 40px auto;
+    display: block;
+}
+
+div#info-auth-resetpassword-loading {
+    font-size: 2.0em;
+    color: hsl(213, 10%, 55%);
+    text-align: center;
+}
+
+.primary-button {
+	color: hsl(213deg 15% 80%);
+    background: linear-gradient(45deg, hsl(0deg 50% 40%), hsl(0deg 60% 50%));
+    box-shadow: 0 0 10px 10px hsl(0deg 0% 9%);
+    padding: 15px;
+    border-radius: 30px;
+	border: none;
+	transition: color .2s ease-out, box-shadow .2s ease-out;
+	cursor: pointer;
+}
+
+.primary-button:disabled {
+	cursor: not-allowed;
+	background-image: linear-gradient(45deg, hsl(0deg 40% 20%), hsl(0deg 50% 30%));
+	color: hsl(213deg 10% 60%);
+}
+
+.primary-button:hover {
+	color: hsl(213deg 15% 95%);
+    background: linear-gradient(45deg, hsl(0deg 60% 50%), hsl(0deg 80% 40%));
+    box-shadow: 0 0 10px 10px hsl(0deg 0% 8%);
+}
